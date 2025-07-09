@@ -1,0 +1,70 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Minecraft', sans-serif;
+}
+
+body {
+    background-color: #c5c6d0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    align-items: center;
+}
+
+#flag-button {
+    padding: 6px 12px;
+    font-size: 16px;
+    background-color: lightgray;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+.board {
+    display: grid;
+    gap: 2px;
+}
+
+.board button {
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+    border: 2px solid #333;
+    background-color: #444; /* dark grey for unrevealed */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.board button.tile-clicked {
+    background-color: #aaa; /* lighter grey for revealed */
+    cursor: default;
+}
+
+.board button:hover:not(.tile-clicked) {
+    background-color: #555;
+}
+
+.x1 { color: blue; }
+.x2 { color: green; }
+.x3 { color: red; }
+.x4 { color: navy; }
+.x5 { color: maroon; }
+.x6 { color: turquoise; }
+.x7 { color: black; }
+.x8 { color: gray; }
