@@ -3,7 +3,7 @@ let rows, columns, minesCount, flagsLeft;
 let minesLocation = [];
 let tilesClicked = 0;
 let gameOver = false;
-
+let gamePause=false;
 let timer = 0;
 let timerInterval;
 
@@ -17,6 +17,7 @@ window.onload = () => {
     document.getElementById("mines-count").innerText = flagsLeft;
     document.getElementById("flags-left").innerText = flagsLeft;
     document.getElementById("restart-button").addEventListener("click", restartGame);
+    document.getElementById("pause-button").addEventListener("click", pauseTimer);
     setMines();
     setupBoard();
     startTimer();
@@ -55,7 +56,6 @@ function setupBoard() {
 
 function startTimer() {
     if (timerInterval) return;
-    timer = 0; //reset timer to 0
     document.getElementById("timer").innerText = timer;
 
     timerInterval = setInterval(() => {
@@ -69,8 +69,27 @@ function stopTimer() {
 
 }
 
+function pauseTimer() {
+    const pauseBtn=this;
+    
+    if(pauseBtn.classList.contains("btn-clicked"))
+    {
+        startTimer();
+        gamePause=false;
+        pauseBtn.classList.remove("btn-clicked");
+    }
+    else
+    {
+        clearInterval(timerInterval);
+        timerInterval = null;
+        pauseBtn.classList.add("btn-clicked");
+        gamePause = true;
+    }
+
+}
+
 function handleLeftClick() {
-    if (gameOver || this.classList.contains("tile-clicked")) return;
+    if (gamePause || gameOver || this.classList.contains("tile-clicked")) return;
 
     const tile = this;
 
@@ -98,7 +117,7 @@ function handleLeftClick() {
 
 function handleRightClick(e) {
     e.preventDefault();
-    if (gameOver || this.classList.contains("tile-clicked")) return;
+    if (gamePause || gameOver || this.classList.contains("tile-clicked")) return;
 
     const tile = this;
 
@@ -191,7 +210,7 @@ function restartGame() {
     document.getElementById("mines-count").innerText = minesCount;
     document.getElementById("flags-left").innerText = flagsLeft;
     document.getElementById("timer").innerText = "0";
-
+    timer=0;
     // Reinitialize game
     setMines();
     setupBoard();
