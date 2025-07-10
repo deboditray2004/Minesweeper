@@ -77,6 +77,7 @@ function pauseTimer() {
         startTimer();
         gamePause=false;
         pauseBtn.classList.remove("btn-clicked");
+        pauseBtn.innerText ="❚❚";
     }
     else
     {
@@ -84,6 +85,7 @@ function pauseTimer() {
         timerInterval = null;
         pauseBtn.classList.add("btn-clicked");
         gamePause = true;
+        pauseBtn.innerText ="▶";
     }
 
 }
