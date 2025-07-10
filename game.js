@@ -55,7 +55,7 @@ function setupBoard() {
 
 function startTimer() {
     if (timerInterval) return;
-    timer = 0; // ✅ reset timer to 0
+    timer = 0; //reset timer to 0
     document.getElementById("timer").innerText = timer;
 
     timerInterval = setInterval(() => {
