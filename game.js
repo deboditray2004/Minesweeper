@@ -146,7 +146,7 @@ function countAdjacentMines(r, c) {
         for (let dc = -1; dc <= 1; dc++) {
             const nr = r + dr, nc = c + dc;
             if (nr >= 0 && nr < rows && nc >= 0 && nc < columns) {
-                if (minesLocation.includes(`${nr}-${nc}`)) count++;
+                if (minesLocation.includes(nr+"-"+nc)) count++;
             }
         }
     }
