@@ -26,9 +26,9 @@ function setMines() {
     while (minesLocation.length < minesCount) {
         let r = Math.floor(Math.random() * rows);
         let c = Math.floor(Math.random() * columns);
-        let id = `${r}-${c}`;
-        if (!minesLocation.includes(id)) {
-            minesLocation.push(id);
+        let rc = r+"-"+c;
+        if (!minesLocation.includes(rc)) {
+            minesLocation.push(rc);
         }
     }
 }
@@ -43,7 +43,7 @@ function setupBoard() {
         let row = [];
         for (let c = 0; c < columns; c++) {
             const tile = document.createElement("button");
-            tile.id = `${r}-${c}`;
+            tile.id = r+"-"+c;
             tile.addEventListener("click", handleLeftClick);
             tile.addEventListener("contextmenu", handleRightClick);
             boardElem.appendChild(tile);

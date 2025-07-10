@@ -11,6 +11,10 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-image:
+      linear-gradient(to right, #a2a3a8 2px, transparent 1px),
+      linear-gradient(to bottom, #a2a3a8 2px, transparent 1px);
+    background-size: 32px 32px; /* size of each cell */
 }
 
 .game-container {
@@ -27,13 +31,6 @@ body {
     align-items: center;
 }
 
-#flag-button {
-    padding: 6px 12px;
-    font-size: 16px;
-    background-color: lightgray;
-    border: 2px solid black;
-    cursor: pointer;
-}
 
 .board {
     display: grid;
