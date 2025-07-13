@@ -16,9 +16,6 @@ A classic Minesweeper game built using HTML, CSS, and JavaScript — fully inter
 - ✅ Responsive grid using CSS Grid
 - ✅ Custom Minecraft-inspired font and visual theme
 
-## 🧩 Screenshots
-
-*(Add your screenshots here)*
 
 ## 🚀 Try it Out
 
