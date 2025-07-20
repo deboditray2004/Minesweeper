@@ -34,7 +34,7 @@ body {
 {
     font-size: 100px;
     margin-bottom: 20px;
-    animation: slideInFromTop .7s ease-in;
+    animation: slideInFromTop .7s ease-in; /*animation-name animation-duration animation-timing-function ease-in means slow at the beginning but fast at the end */
 }
 
 
@@ -47,7 +47,7 @@ button {
     color: #fff;
     cursor: pointer;
     box-shadow: 4px 4px 0 #222;
-    animation : slideInFromBottom .7s ease-in;
+    animation : slideInFromBottom .7s ease-in; /*animation-name animation-duration animation-timing-function ease-in means slow at the beginning but fast at the end */
 }
 
 
@@ -60,7 +60,7 @@ a {
 /*bracket details*/
 .details
 {
-    display:none;
+    display:none; /*can't use transitions on display*/
 }
 
 a:hover .details
@@ -97,7 +97,7 @@ a:hover .details
   }
 
   100% {
-    transform: translateX(0);
+    transform: translateY(0);
   }
 }
 
@@ -107,6 +107,6 @@ a:hover .details
   }
 
   100% {
-    transform: translateX(0);
+    transform: translateY(0);
   }
 }
