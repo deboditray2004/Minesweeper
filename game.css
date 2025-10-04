@@ -14,7 +14,7 @@ body {
     background-image:
       linear-gradient(to right, #a2a3a8 2px, transparent 1px),
       linear-gradient(to bottom, #a2a3a8 2px, transparent 1px);
-    background-size: 32px 32px; /* size of each cell */
+    background-size: 32px 32px;
 }
 
 .game-container {
@@ -31,11 +31,9 @@ body {
     align-items: center;
 }
 
-
 .board {
     display: grid;
     gap: 2px;
-    
 }
 
 .board button {
@@ -43,37 +41,15 @@ body {
     height: 32px;
     font-size: 18px;
     border: 2px solid #333;
-    background-color: #444; /* dark grey for unrevealed */
+    background-color: #444;
     color: white;
     cursor: pointer;
     transition: background-color 0.2s;
 }
 
-.board button.tile-clicked {
-    background-color: #aaa; /* lighter grey for revealed */
+.board button[isClicked="true"] {
+    background-color: #aaa;
     cursor: default;
-}
-
-.board button:hover:not(.tile-clicked) {
-    background-color: #555;
-}
-#pause-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(20, 20, 20, 0.6); /* semi-transparent dark */
-  color: white;
-  font-size: 32px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none; /* allow click-through if needed */
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: 2;
 }
 
 #pause-overlay.active {
@@ -81,97 +57,49 @@ body {
   pointer-events: all;
 }
 
-#restart-button
-{
-    border:none;
-    background-color: transparent;
+#restart-button,
+#pause-button {
+    border: none;
+    background: transparent;
+    font-weight: 1000;
+    cursor: pointer;
+    animation: slideInFromRight 1s ease-in;
+}
+
+#restart-button {
     font-size: 35px;
-    font-weight:1000;
 }
-#pause-button
-{
-    border:none;
-    background-color: transparent;
+
+#pause-button {
     font-size: 22px;
-    font-weight:1000;
 }
-#restart-button:hover{
-    cursor:pointer;
-}
-#pause-button:hover{
-    cursor:pointer;
-}
-
-.details
-{
-    display:none;
-}
-#pause-button:.btn-clicked .details
-{
-    display:inline;
-}
-.x1 { color: blue; }
-.x2 { color: green; }
-.x3 { color: red; }
-.x4 { color: navy; }
-.x5 { color: maroon; }
-.x6 { color: turquoise; }
-.x7 { color: black; }
-.x8 { color: gray; }
-
 
 /* Animations */
 @keyframes slideInFromLeft {
-  0% {
-    transform: translateX(-200%);
-  }
-
-  100% {
-    transform: translateX(0);
-  }
+  0% { transform: translateX(-200%); }
+  100% { transform: translateX(0); }
 }
 
 @keyframes slideInFromRight {
-  0% {
-    transform: translateX(600%);
-  }
-
-  100% {
-    transform: translateX(0);
-  }
+  0% { transform: translateX(600%); }
+  100% { transform: translateX(0); }
 }
 
 @keyframes slideInFromTop {
-  0% {
-    transform: translateY(-100%);
-  }
-
-  100% {
-    transform: translateX(0);
-  }
+  0% { transform: translateY(-100%); }
+  100% { transform: translateX(0); }
 }
 
 @keyframes slideInFromBottom {
-  0% {
-    transform: translateY(100%);
-  }
-
-  100% {
-    transform: translateX(0);
-  }
+  0% { transform: translateY(100%); }
+  100% { transform: translateX(0); }
 }
 
-#restart-button, #pause-button
-{
-    animation:slideInFromRight 1s ease-in;
+.m {
+    animation: slideInFromLeft 1s ease-in;
 }
 
-.m
-{
-    animation:slideInFromLeft 1s ease-in;
-}
-
-.f,.t
-{
-    animation:slideInFromTop .8s ease-in;
+.f,
+.t {
+    animation: slideInFromTop .8s ease-in;
 }
