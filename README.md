@@ -25,11 +25,10 @@ Hosted on Netlify:
 ## 🛠 Tech Stack
 
 - HTML5
-- CSS3 (with `display: grid`)
+- CSS3
 - Vanilla JavaScript (no libraries)
 ## ✨ Future Ideas
-
-- ⏹ Add pause/resume functionality  
+ 
 - 🔁 Add animations for mine explosions  
 - 🎵 Sound effects on click/flag  
 - 🖱 Double-click to auto-clear surrounding tiles  
