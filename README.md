@@ -119,11 +119,12 @@ src/
 
 The game uses dynamic routing to set difficulty:
 
-
-| **Home**   | `/`                              |
-| **Easy**   | `/game?rows=8&cols=8&mines=10`   |
+| Difficulty | Route |
+| :--- | :--- |
+| **Home** | `/` |
+| **Easy** | `/game?rows=8&cols=8&mines=10` |
 | **Medium** | `/game?rows=16&cols=16&mines=40` |
-| **Hard**   | `/game?rows=16&cols=30&mines=99` |
+| **Hard** | `/game?rows=16&cols=30&mines=99` |
 
 ---
 
