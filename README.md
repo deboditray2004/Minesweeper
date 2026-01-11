@@ -1,41 +1,62 @@
-# 🧨 Minesweeper Game
+# 🧨 Minesweeper (Vanilla JavaScript)
 
-A classic Minesweeper game built using HTML, CSS, and JavaScript — fully interactive, mobile-friendly, and styled with a pixel-perfect retro vibe!
+A classic **Minesweeper game built using pure HTML, CSS, and JavaScript**, inspired by the original Windows Minesweeper.
+
+This project focuses on **DOM manipulation, game logic, and algorithmic thinking** without using any frameworks or libraries.
+
+---
 
 ## 🎮 Features
 
-- ✅ Three difficulty levels:
-  - Easy (8×8, 10 mines)
-  - Medium (16×16, 40 mines)
-  - Hard (16×30, 99 mines)
-- ✅ Right-click to place 🚩 flags
-- ✅ Left-click to reveal cells
-- ✅ Flags limited to number of mines
-- ✅ Timer (⏱) that tracks how long you've survived
-- ✅ Restart button 🔁 to reset the game at any time
-- ✅ Responsive grid using CSS Grid
-- ✅ Custom Minecraft-inspired font and visual theme
+- Three difficulty levels:
+  - **Easy**: 8 × 8 grid, 10 mines
+  - **Medium**: 16 × 16 grid, 40 mines
+  - **Hard**: 16 × 30 grid, 99 mines
+- First click is always safe
+- Recursive flood-fill reveal for empty cells
+- Right-click to place/remove flags
+- Mine counter & flag counter
+- Game timer
+- Pause / Resume functionality
+- Restart button
+- Pixel-style UI using Minecraft font
+- Classic Minesweeper grid background
 
-
-## 🚀 Try it Out
-
-Hosted on Netlify:  
-🔗 [tickboxes.netlify.app](https://tickboxes.netlify.app)
+---
 
 ## 🛠 Tech Stack
 
-- HTML5
-- CSS3
-- Vanilla JavaScript (no libraries)
-## ✨ Future Ideas
- 
-- 🔁 Add animations for mine explosions  
-- 🎵 Sound effects on click/flag  
-- 🖱 Double-click to auto-clear surrounding tiles  
-- 📱 Long-press flagging support for mobile
+- **HTML**
+- **CSS**
+- **Vanilla JavaScript**
 
-## 📄 License
+No frameworks, no libraries.
 
-MIT License — free to use, modify, and share.
+---
+
+## 🧠 Core Concepts Used
+
+- DOM traversal & manipulation
+- Event handling (`click`, `contextmenu`)
+- Breadth-First Search (BFS) for cell reveal
+- Game state tracking
+- Timers (`setInterval`)
+- CSS animations
+
+---
+
+## 📂 Project Structure
+
+├── index.html
+├── easy.html
+├── medium.html
+├── hard.html
+├── game.css
+└── game.js
+
+Each difficulty page loads the same logic with different grid configurations.
+
+---
+
 
 
