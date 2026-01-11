@@ -48,10 +48,15 @@ No frameworks, no libraries.
 ## 📂 Project Structure
 
 ├── index.html
+
 ├── easy.html
+
 ├── medium.html
+
 ├── hard.html
+
 ├── game.css
+
 └── game.js
 
 Each difficulty page loads the same logic with different grid configurations.
