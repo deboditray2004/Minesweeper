@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Monocraft";
+  src: url("./assets/Fonts/Monocraft-Bold.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+
