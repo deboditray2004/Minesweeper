@@ -46,7 +46,8 @@ No frameworks, no libraries.
 ---
 
 ## 📂 Project Structure
-.
+
+```text
 ├── index.html
 ├── easy.html
 ├── medium.html
