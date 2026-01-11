@@ -1,6 +1,6 @@
 //board var
 let minesCount,flagLeft,rows,cols;
-let minesLocation=[],board=[];
+let minesLocation=new Set(),board=[];
 let blocksClicked=[];
 //time var
 let timer=null;
@@ -9,6 +9,7 @@ let time=0;
 let isGamePaused=false;
 let isGameOver=false;
 let won=false;
+let firstClick=true;
 
 window.addEventListener('load',readSettings);
 
@@ -31,28 +32,39 @@ function readSettings()
     document.getElementById("timer").innerText = "0";
 
     setupBoard();
-    startTimer();
 
 }
-function minesLoc()
+function minesLoc(id)
 {
-    minesLocation=[]
+    const [r,c]= id.split(" ").map(Number);
+    const forbidden = new Set();
+    for (let dr = -1; dr <= 1; dr++)
+    {
+        for (let dc = -1; dc <= 1; dc++)
+        {
+            const nr = r + dr, nc = c + dc;
+            if (nr >= 0 && nr < rows && nc >= 0 && nc < cols)
+            {
+                forbidden.add(`${nr} ${nc}`);
+            } 
+        }
+    }
     let count=0;
     while(count<minesCount)
     {
         let i=Math.floor(Math.random() * (rows));//Math.floor(Math.random() * (max - min + 1)) + min; here max is row-1,min is  0
         let j=Math.floor(Math.random() * (cols));
         let coordinates=i+" "+j;
-        if (!minesLocation.includes(coordinates))
+        if (!minesLocation.has(coordinates) && !forbidden.has(coordinates))
         {
             count++;
-            minesLocation.push(coordinates);
+            minesLocation.add(coordinates);
         }
     }
 }
 function setupBoard()
 {
-    minesLoc();
+    
     const gameBoard=document.querySelector(".board");
     gameBoard.style.gridTemplateColumns=`repeat(${cols},32px)`;
     gameBoard.innerHTML = "";
@@ -124,7 +136,16 @@ function pauseTimer()
 function handleLeftClick()
 {
     const block=this;
+    const id=block.getAttribute("id");
     if(isGameOver || isGamePaused || block.getAttribute("isClicked")=="true") return; //cases where clicking on a tile has no effect
+    if(firstClick)
+    {
+        firstClick=false;
+        minesLoc(id);
+        revealBlock(id);
+        startTimer();
+        return;
+    }
     //tile has a flag
     if(block.innerText==="🚩")
     {
@@ -133,8 +154,8 @@ function handleLeftClick()
         document.querySelector("#flags-left").innerText=flagLeft;
         return;
     }
-    const id=block.getAttribute("id");
-    if(minesLocation.includes(id))
+    
+    if(minesLocation.has(id))
     {
         revealAllBombs();
     }
@@ -246,7 +267,7 @@ function countAdjacentMines(r, c) {
         for (let dc = -1; dc <= 1; dc++) {
             const nr = r + dr, nc = c + dc;
             if (nr >= 0 && nr < rows && nc >= 0 && nc < cols) {
-                if (minesLocation.includes(nr+" "+nc)) count++;
+                if (minesLocation.has(nr+" "+nc)) count++;
             }
         }
     }
@@ -261,7 +282,7 @@ function restart() {
     document.querySelector("#pause-button").innerText="❚❚";
     //board var
     minesCount=0,flagLeft=0,rows=0,cols=0;
-    minesLocation=[],board=[];
+    minesLocation=new Set(),board=[];
     blocksClicked=[];
     //time var
     timer=null;
@@ -270,6 +291,7 @@ function restart() {
     isGamePaused=false;
     isGameOver=false;
     won=false;
+    firstClick=true;
 
     // Re-read settings
     readSettings();
