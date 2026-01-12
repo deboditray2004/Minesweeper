@@ -88,7 +88,6 @@ This version focuses on **scalability, maintainability, and modern frontend prac
 * **Framework:** React (Vite)
 * **Styling:** Tailwind CSS (v4)
 * **Routing:** React Router
-* **Icons:** Lucide-React / Heroicons (if applicable)
 
 ---
 
