@@ -241,15 +241,16 @@ export default function Game(props) {
                         count++;
                     }
                 }
+                console.log("count: ",count);
+                blocksClickedCount.current+=count;
+                console.log(blocksClickedCount);
+                if (blocksClickedCount.current === rows * cols - minesCount) {
+                    isGameWon.current=true;
+                    revealAllBombs();
+                }
                 return newBoard;
             });
-            console.log("count: ",count);
-            blocksClickedCount.current+=count;
-            console.log(blocksClickedCount);
-            if (blocksClickedCount.current === rows * cols - minesCount) {
-                isGameWon.current=true;
-                revealAllBombs();
-            }
+            
         }
     ,[rows,cols,revealAllBombs,minesCount]);
 
