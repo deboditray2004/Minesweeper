@@ -106,7 +106,7 @@ export default function Game(props) {
                     }
                 }
                 blocksClickedCount.current+=count;
-
+                console.log(blocksClickedCount);
                 return newBoard;
             });
         }
@@ -243,6 +243,7 @@ export default function Game(props) {
                 return newBoard;
             });
             blocksClickedCount.current+=count;
+            console.log(blocksClickedCount);
             if (blocksClickedCount.current === rows * cols - minesCount) {
                 isGameWon.current=true;
                 revealAllBombs();
