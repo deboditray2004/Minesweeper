@@ -4,6 +4,7 @@ A classic **Minesweeper game built using pure HTML, CSS, and JavaScript**, inspi
 
 This project focuses on **DOM manipulation, game logic, and algorithmic thinking** without using any frameworks or libraries.
 
+🔗 Live Demo: https://tickboxes.netlify.app
 ---
 
 ## 🎮 Features
@@ -67,6 +68,7 @@ A modern **React-based Minesweeper game**, rebuilt from a vanilla JavaScript imp
 
 This version focuses on **scalability, maintainability, and modern frontend practices.**
 
+🔗 Live Demo: https://tickboxes-react.netlify.app
 ---
 
 ## 🎮 Features
@@ -86,7 +88,6 @@ This version focuses on **scalability, maintainability, and modern frontend prac
 * **Framework:** React (Vite)
 * **Styling:** Tailwind CSS (v4)
 * **Routing:** React Router
-* **Icons:** Lucide-React / Heroicons (if applicable)
 
 ---
 

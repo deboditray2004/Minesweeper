@@ -16,7 +16,7 @@ export default function Home() {
                     </NavLink>
                 </button>
                 <button className="text-[22px] px-6 py-3 border-4 border-black bg-[#151515] text-white cursor-pointer shadow-[4px_4px_0_#222] animate-[slideInFromBottom_.7s_ease-in] group">
-                    <NavLink to="/game?mines=99&rows=16&cols=16">Hard 
+                    <NavLink to="/game?mines=99&rows=16&cols=30">Hard 
                     <span className="hidden group-hover:inline"> [99 mines]</span>
                     </NavLink>
                 </button>
