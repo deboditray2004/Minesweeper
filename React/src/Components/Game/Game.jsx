@@ -4,6 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 import Grid from '../Grid/Grid';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+
 export default function Game(props) {
 
     const [searchParams, setSearchParams] = useSearchParams();
