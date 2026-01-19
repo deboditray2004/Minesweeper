@@ -242,6 +242,7 @@ export default function Game(props) {
                 }
                 return newBoard;
             });
+            console.log("count: ",c);
             blocksClickedCount.current+=count;
             console.log(blocksClickedCount);
             if (blocksClickedCount.current === rows * cols - minesCount) {
