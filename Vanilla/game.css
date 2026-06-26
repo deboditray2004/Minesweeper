@@ -47,9 +47,14 @@ body {
     transition: background-color 0.2s;
 }
 
-.board button[isClicked="true"] {
+.board button.clicked {
     background-color: #aaa;
     cursor: default;
+}
+
+.board.paused button {
+    color: transparent;
+    text-shadow: none;
 }
 
 #pause-overlay.active {

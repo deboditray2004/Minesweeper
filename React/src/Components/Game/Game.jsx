@@ -5,6 +5,8 @@ import Grid from '../Grid/Grid';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
+const copyBoard = (board) => board.map(row => row.map(c => ({ ...c })));
+
 export default function Game(props) {
 
     const [searchParams, setSearchParams] = useSearchParams();
@@ -59,8 +61,7 @@ export default function Game(props) {
         (minesLocation,i,j)=>{
             setBoard((prevBoard)=>
             {
-                const newBoard = prevBoard.map(row =>
-                row.map(c => ({ ...c })));
+                const newBoard = copyBoard(prevBoard);
                 for(let r=0;r<rows;r++)
                 {
                     for(let c=0;c<cols;c++)
@@ -178,9 +179,7 @@ export default function Game(props) {
     const revealAllBombs=useCallback(
         ()=>{
             setBoard(prevBoard => {
-                const newBoard = prevBoard.map(row =>
-                row.map(c => ({ ...c }))
-                );
+                const newBoard = copyBoard(prevBoard);
                 for(let i=0;i<rows;i++)
                 {
                     for(let j=0;j<cols;j++ )
@@ -202,8 +201,7 @@ export default function Game(props) {
         (cell)=>{
             let count=0;
             setBoard(prevBoard => {
-                const newBoard = prevBoard.map(row =>
-                row.map(c => ({ ...c })));
+                const newBoard = copyBoard(prevBoard);
                 const target = newBoard[cell.row][cell.col];
                 if(target.adjMines==0)
                 {
@@ -297,9 +295,7 @@ export default function Game(props) {
         if(isGameOver.current || isGamePaused || cell.isClicked) return;
         let c=0;
         setBoard(prevBoard => {
-            const newBoard = prevBoard.map(row =>
-            row.map(c => ({ ...c }))
-            );
+            const newBoard = copyBoard(prevBoard);
 
             const target = newBoard[cell.row][cell.col];
             if(target.isFlagged)

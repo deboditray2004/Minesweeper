@@ -1,7 +1,7 @@
 //board var
 let minesCount,flagLeft,rows,cols;
 let minesLocation=new Set(),board=[];
-let blocksClicked=[];
+let revealedCount=0;
 //time var
 let timer=null;
 let time=0;
@@ -76,7 +76,6 @@ function setupBoard()
         {
             const block=document.createElement("button");
             block.setAttribute("id",i+" "+j);
-            block.setAttribute("isClicked","false");
             block.addEventListener('click',handleLeftClick);
             block.addEventListener('contextmenu',handleRightClick);
             gameBoard.appendChild(block);
@@ -107,28 +106,20 @@ function pauseTimer()
 {
     if(isGameOver)
         return;
+    const gameBoard = document.querySelector(".board");
     if(isGamePaused)//game is paused
     {
         isGamePaused=false;
         startTimer();
         document.querySelector("#pause-button").innerText="❚❚";
-        for(const block of blocksClicked)
-        {
-            block.setAttribute("isClicked","true");
-            block.innerText=block.getAttribute("val");
-        }
+        gameBoard.classList.remove("paused");
     }
     else //game is running
     {
         isGamePaused=true;
         stopTimer();
         document.querySelector("#pause-button").innerText="▶";
-        for(const block of blocksClicked)
-        {
-            block.setAttribute("isClicked","false");
-            block.setAttribute("val",block.innerText);
-            block.innerText="";
-        }
+        gameBoard.classList.add("paused");
     }
 }
 
@@ -137,7 +128,7 @@ function handleLeftClick()
 {
     const block=this;
     const id=block.getAttribute("id");
-    if(isGameOver || isGamePaused || block.getAttribute("isClicked")=="true") return; //cases where clicking on a tile has no effect
+    if(isGameOver || isGamePaused || block.classList.contains("clicked")) return; //cases where clicking on a tile has no effect
     if(firstClick)
     {
         firstClick=false;
@@ -169,7 +160,7 @@ function handleRightClick(event)
 {
     event.preventDefault();
     const block=this;
-    if(isGameOver || isGamePaused || block.getAttribute("isClicked")=="true") return; //cases where clicking on a tile has no effect
+    if(isGameOver || isGamePaused || block.classList.contains("clicked")) return; //cases where clicking on a tile has no effect
     //tile has a flag
     if(block.innerText==="🚩")
     {
@@ -224,18 +215,20 @@ function revealBlock(id)
         while(q.length!=0)
         {
             const [cr,cc]=q.shift();
-            const block=board[cr][cc];
-            if(block.innerText==="🚩" || block.getAttribute("isClicked")=="true")
+            const currentBlock=board[cr][cc];
+            if(currentBlock.innerText==="🚩" || currentBlock.classList.contains("clicked"))
                 continue;
-            if(countAdjacentMines(cr,cc)>0)
+            
+            let mines = countAdjacentMines(cr,cc);
+            currentBlock.classList.add("clicked");
+            revealedCount++;
+            
+            if(mines>0)
             {
-                block.innerText=countAdjacentMines(cr,cc);
-                block.setAttribute("isClicked","true");
-                blocksClicked.push(block);
+                currentBlock.innerText=mines;
                 continue;
             }
-            block.setAttribute("isClicked","true");
-            blocksClicked.push(block);
+            
             for (let dr = -1; dr <= 1; dr++) 
             {
                 for (let dc = -1; dc <= 1; dc++) 
@@ -252,10 +245,10 @@ function revealBlock(id)
     else
     {
         block.innerText=adjMines;
-        block.setAttribute("isClicked","true");
-        blocksClicked.push(block);
+        block.classList.add("clicked");
+        revealedCount++;
     }
-    if (blocksClicked.length === rows * cols - minesCount)
+    if (revealedCount === rows * cols - minesCount)
     {
         won=true;
         revealAllBombs();
@@ -283,7 +276,7 @@ function restart() {
     //board var
     minesCount=0,flagLeft=0,rows=0,cols=0;
     minesLocation=new Set(),board=[];
-    blocksClicked=[];
+    revealedCount=0;
     //time var
     timer=null;
     time=0;
